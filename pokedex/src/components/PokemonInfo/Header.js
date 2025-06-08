@@ -27,7 +27,7 @@ export default function Header(props) {
 const styles= StyleSheet.create({
 bgc: {
     width: "100%",
-    height: 400,
+    height: 350,
     position: "absolute",
     borderBottomEndRadius: 300,
     borderBottomLeftRadius:300,
@@ -41,7 +41,7 @@ header:{
   flexDirection: 'row',
   justifyContent: "space-between",
   alignItems: 'center',
-   marginTop: 50,
+   marginTop: 30,
 },
 name: {
   color: "#fff",

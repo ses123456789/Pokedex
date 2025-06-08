@@ -4,6 +4,7 @@ import Header from '../components/PokemonInfo/Header';
 import Types from '../components/PokemonInfo/Types';
 import Stats from '../components/PokemonInfo/Stats';
 import { Ionicons } from '@expo/vector-icons';
+import Characteristics from '../components/PokemonInfo/Characteristics';
 
 export default function PokemonScreen({route,navigation}) {
 const pokemon = route?.params?.pokemon
@@ -40,6 +41,12 @@ useEffect(() => {
       id= {pokemon.id}       
       types= {pokemon.types}
       image= {pokemon.image}      
+      />
+      <Characteristics 
+      weight={pokemon.weight}
+      height= {pokemon.height}
+      ability= {pokemon.ability}
+      
       />
       <Types  types= {pokemon.types}/>
       <Stats stats={pokemon.stats}/>
