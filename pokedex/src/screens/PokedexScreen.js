@@ -1,5 +1,5 @@
 import { View } from 'react-native'
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useRef} from 'react'
 import { GetPokemonapi, GetPokemonInfobyURLApi } from '../API/Pokemon';
 import PokemonList from '../components/PokemonList';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -8,6 +8,7 @@ export default function PokedexScreen() {
  
  const  [pokemons , setPokemons]=useState([])
  const [nextUrl, setNextUrl]= useState(null)
+  const loadingRef = useRef(false)
 
   useEffect(() => {
   (async () => {
@@ -17,6 +18,8 @@ export default function PokedexScreen() {
 
 
 const loadPokemons = async () => {
+  if (loadingRef.current) return;
+    loadingRef.current = true; 
   try {
     const response = await GetPokemonapi(nextUrl);
     setNextUrl(response.next);
@@ -45,7 +48,9 @@ const loadPokemons = async () => {
     setPokemons(prev => [...prev, ...pokemonData]);
   } catch (error) {
     console.error(error);
-  }
+  } finally {
+      loadingRef.current = false;
+    }
 };
 
 return (

@@ -5,12 +5,24 @@ import Types from '../components/PokemonInfo/Types';
 import Stats from '../components/PokemonInfo/Stats';
 import { Ionicons } from '@expo/vector-icons';
 import Characteristics from '../components/PokemonInfo/Characteristics';
-
+import Favorite from '../components/PokemonInfo/Favorite';
+import UseAuth from '../hooks/UseAuth'
 export default function PokemonScreen({route,navigation}) {
-const pokemon = route?.params?.pokemon
-useEffect(() => {
+
+  const pokemon = route?.params?.pokemon
+  const {auth} = UseAuth()
+
+    if (!pokemon) {
+    console.warn('No se recibió un Pokémon');
+    return (
+      <View>
+        <Text>Pokémon no disponible</Text>
+      </View>
+    );
+  }
+  useEffect(() => {
     navigation.setOptions({
-      headerRight: () => null,
+      headerRight: () =>auth ?<Favorite id= {pokemon.id}/>: undefined,
       headerLeft: () => (       
            <Ionicons
           name="arrow-back"
@@ -24,16 +36,6 @@ useEffect(() => {
       ),
     });
   }, [navigation]);
-
-    if (!pokemon) {
-    console.warn('No se recibió un Pokémon');
-    return (
-      <View>
-        <Text>Pokémon no disponible</Text>
-      </View>
-    );
-  }
-  
   return (
     <ScrollView>
       <Header 

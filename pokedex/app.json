@@ -16,6 +16,7 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "santiago_estrada_sotelo.pokedex",
       "adaptiveIcon": {
         "foregroundImage": "./assets/pokebola.jpg",
         "backgroundColor": "#ffffff"
@@ -24,6 +25,18 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "445221e3-74bc-4f6e-b0ad-927f04145421"
+      }
+    },
+    "owner": "ses123456789",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/445221e3-74bc-4f6e-b0ad-927f04145421"
     }
   }
 }

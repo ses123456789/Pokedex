@@ -10,7 +10,8 @@ const Tab= createBottomTabNavigator();
 export default function Navigation(){
     return (
         <Tab.Navigator
-          screenOptions={({ route }) => ({
+        initialRouteName='Pokedex'  
+        screenOptions={({ route }) => ({
             headerTitleAlign: 'center',
         headerTitleStyle: {
           fontWeight: 'bold',                     
@@ -30,7 +31,7 @@ export default function Navigation(){
         tabBarInactiveTintColor: 'gray', 
       })}
     >        
-            <Tab.Screen name= "Favorites" component={FavoritesNavigation }
+            <Tab.Screen name= "Favorites" component={FavoritesNavigation } options={{ headerShown: false,}}
              
 
             />
